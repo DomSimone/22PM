@@ -18,8 +18,8 @@ class Settings:
     """Application settings loaded from environment variables."""
 
     # LLM API Keys
-    GEMINI_API_KEY: str = "AIzaSyBRvYT6PUq0MoLJuucJ6fTOVfKvYhzkNTc"
-    GROQ_API_KEY: str = "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"
+    GEMINI_API_KEY: str ="AIzaSyBRvYT6PUq0MoLJuucJ6fTOVfKvYhzkNTc"
+    GROQ_API_KEY: str ="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"
 
     # LLM Models (free tier defaults)
     GEMINI_MODEL: str = "gemini-1.5-flash"       # 60 req/min free
