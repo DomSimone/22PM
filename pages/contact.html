@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | 22PM</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../22pmlogo24.png">
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <section class="hero" style="padding-bottom: 60px;">
+        <div class="container">
+            <span class="badge">GET STARTED</span>
+            <h1>Ready to Automate Your Business?</h1>
+            <p class="hero-sub">Book a free 15-minute audit. We'll identify your top 3 automation opportunities at no cost.</p>
+        </div>
+    </section>
+
+    <section style="padding-top: 0;">
+        <div class="container">
+            <div class="contact-grid" style="max-width: 900px; margin: 0 auto;">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <p>hello@22pm.work</p>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">💬</span>
+                        <p>Response time: < 2 hours</p>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📹</span>
+                        <p>Prefer video? Send a Loom to hello@22pm.work</p>
+                    </div>
+                    <div class="risk-free-badge">
+                        <h4>Risk-Free Guarantee</h4>
+                        <p>If your workflow doesn't save measurable time within 7 days, you pay absolutely nothing. No fine print.</p>
+                    </div>
+                    <div class="risk-free-badge" style="border-color: var(--border-light);">
+                        <h4>What happens next?</h4>
+                        <ol style="padding-left: 18px;">
+                            <li>You fill out this form (takes 2 minutes)</li>
+                            <li>We review and respond within 2 hours</li>
+                            <li>We schedule a 15-minute discovery call</li>
+                            <li>We build your workflow on free tiers</li>
+                            <li>You test it for 7 days risk-free</li>
+                        </ol>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <h3>Book Your Free Audit</h3>
+                    <p style="color: var(--text-secondary); font-size: 13px; margin-bottom: 8px;">All fields required unless marked optional.</p>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Company Name" required>
+                    <input type="text" placeholder="Phone (optional)">
+                    <select required>
+                        <option value="" disabled selected>Service Interested In</option>
+                        <option>Automated Lead Nurturing</option>
+                        <option>AI Content Factory</option>
+                        <option>Customer Support Agent</option>
+                        <option>Custom Workflow</option>
+                        <option>Not Sure — Tell Me What I Need</option>
+                    </select>
+                    <select required>
+                        <option value="" disabled selected>Company Size</option>
+                        <option>Solo / Freelancer (1 person)</option>
+                        <option>Small Team (2-10)</option>
+                        <option>Growing Business (11-50)</option>
+                        <option>Established Enterprise (50+)</option>
+                    </select>
+                    <textarea placeholder="Tell us about your current process..." rows="3"></textarea>
+                    <button type="submit" class="btn-primary">Book Free Audit →</button>
+                    <p style="color: var(--text-muted); font-size: 12px; text-align: center;">Your information is secure. We'll never share it.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Still Deciding?</h2>
+                <p>What other business owners say after their free audit.</p>
+            </div>
+            <div class="services-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="service-card">
+                    <p style="font-size: 32px; margin-bottom: 8px; color: var(--text-muted);">"</p>
+                    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.7; font-style: italic;">
+                        I was spending 15 hours a week on lead follow-up. 22PM's workflow cut it to zero. The 7-day trial made it a no-brainer.
+                    </p>
+                    <p style="color: var(--text-muted); margin-top: 16px; font-weight: 500; font-size: 13px;">— Real Estate Agency Owner</p>
+                </div>
+                <div class="service-card featured">
+                    <p style="font-size: 32px; margin-bottom: 8px; color: var(--text-muted);">"</p>
+                    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.7; font-style: italic;">
+                        We went from 3 blog posts a month to 30 social posts a week. Same source content, zero extra work. Game changer.
+                    </p>
+                    <p style="color: var(--text-muted); margin-top: 16px; font-weight: 500; font-size: 13px;">— Marketing Agency Founder</p>
+                </div>
+                <div class="service-card">
+                    <p style="font-size: 32px; margin-bottom: 8px; color: var(--text-muted);">"</p>
+                    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.7; font-style: italic;">
+                        Our chatbot handles 85% of support questions now. My team focuses on complex issues instead of repeating answers.
+                    </p>
+                    <p style="color: var(--text-muted); margin-top: 16px; font-weight: 500; font-size: 13px;">— E-commerce Store Owner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/pages.js"></script>
+    <script>
+        new TwentyTwoPage({ title: 'Contact | 22PM' });
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button[type="submit"]');
+            const original = btn.textContent;
+            btn.textContent = '⏳ Sending...';
+            btn.disabled = true;
+            await new Promise(r => setTimeout(r, 1500));
+            btn.textContent = '✓ Sent Successfully';
+            this.reset();
+            setTimeout(() => {
+                btn.textContent = original;
+                btn.disabled = false;
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
