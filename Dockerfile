@@ -1,23 +1,40 @@
-# 22PM Frontend — Static Web App Dockerfile
-# Build: docker build -f 22pm-business/Dockerfile -t 22pm-frontend .
-# Run:   docker run -p 80:80 22pm-frontend
+# 22PM AI Engine — Backend Dockerfile
+# Build: docker build -f engine/Dockerfile -t 22pm-engine .
+# Run:   docker run -p 8000:8000 22pm-engine
 
-FROM nginx:alpine
+FROM python:3.12-slim AS base
 
-# Remove default nginx static files
-RUN rm -rf /usr/share/nginx/html/*
+# Environment
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
 
-# Copy frontend assets
-# Note: We copy everything from 22pm-business/ into nginx html root.
-# The logo file lives one directory above, so we copy it too.
-COPY 22pmlogo24.png /usr/share/nginx/html/22pmlogo24.png
-COPY 22pm-business/ ./
+# System deps (for chromadb/sentence-transformers)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    g++ \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
-# Optional: Add custom nginx config (SPA fallback, caching headers)
-# Uncomment if you want custom config:
-# COPY nginx.conf /etc/nginx/conf.d/default.conf
+WORKDIR /app
 
-EXPOSE 80
+# Install Python deps first for layer caching
+COPY engine/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD wget -qO- http://localhost/ || exit 1
+# Copy application
+COPY engine/ .
+
+# Make entrypoint script executable
+RUN if [ -f "entrypoint.sh" ]; then chmod +x entrypoint.sh; fi
+
+# Expose
+EXPOSE 8000
+
+# Healthcheck (FastAPI built-in health endpoint)
+HEALTHCHECK --interval=30s --timeout=10s --start-period=20s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
+
+# Run with uvicorn (production, single worker + reload off)
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1", "--log-level", "info"]

@@ -1,0 +1,18 @@
+# 22PM AI Engine — Core Dependencies
+# Removed version locks for compatibility with experimental Python versions
+
+fastapi
+uvicorn[standard]
+groq
+google-generativeai
+pydantic
+python-dotenv
+httpx
+PyYAML
+markdown
+apscheduler
+
+# Note: chromadb and sentence-transformers often fail on experimental Python (3.14)
+# If the install fails below, please use Python 3.11 or 3.12
+chromadb
+sentence-transformers
