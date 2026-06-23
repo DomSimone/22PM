@@ -5,13 +5,13 @@
  * 
  * Configuration:
  *   Set API_BASE_URL to your deployed engine URL.
- *   Default: http://localhost:8000 (local development)
+ *   Default: https://two2pm.onrender.com (production)
  * 
  * All endpoints are POST/GET with JSON payloads.
  * All costs: $0 (free-tier LLM providers)
  */
 
-const API_BASE_URL = window._22PM_API_URL || 'http://localhost:8000';
+const API_BASE_URL = window._22PM_API_URL || 'https://two2pm.onrender.com';
 
 const API_CLIENT_VERSION = '1.0.0';
 
