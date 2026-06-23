@@ -42,7 +42,7 @@ async def lifespan(app: FastAPI):
     logger.info(f"  Cost: $0 (free tiers)")
     logger.info("=" * 50)
 
-    if not settings.is_configured():
+    if not settings.is_configured() and settings.DEBUG:
         logger.warning("⚠ No API keys configured. Set GEMINI_API_KEY or GROQ_API_KEY in .env")
 
     yield
