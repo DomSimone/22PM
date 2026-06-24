@@ -22,6 +22,7 @@ WORKDIR /app
 # Install Python deps first for layer caching
 COPY engine/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+RUN .env
 
 # Copy application
 COPY engine/ .
